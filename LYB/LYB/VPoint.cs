@@ -18,6 +18,7 @@ namespace LYB
         float groundFriction = 0.7f;
         Color c;
         SolidBrush brush;
+        public Graphics g;
 
         public bool FromBody
         {
@@ -102,7 +103,7 @@ namespace LYB
             gravity     = new Vec2(0, .8);//
             vel         = new Vec2(vx, vy);
             maxVel      = new Vec2(20, 20);
-            radius      = 5;
+            radius      = 10;
             diameter    = radius + radius;
             Mass        = 1f;
             bounce      = 1f;
@@ -116,8 +117,10 @@ namespace LYB
 
         public void Pin()
         {
+            
             brush = new SolidBrush(Color.Gray);
-            radius = 10;
+            
+            radius = 15;
             diameter = radius + radius;
             isPinned = true;
         }
@@ -156,6 +159,16 @@ namespace LYB
             Constraints(width, height);
 
             g.FillEllipse(brush, pos.X - radius, pos.Y - radius, diameter, diameter);
+
+            if(isPinned == true)
+            {
+                g.DrawImage(Resources._100_pts, pos.X - radius, pos.Y - radius, diameter, diameter);
+            }
+
+            if(isPinned!= true) 
+            {
+                g.DrawImage(Resources.Pinball, pos.X - radius, pos.Y - radius, diameter, diameter);
+            }
             //g.DrawImage(Resources.Pinball, pos.X - radius, pos.Y - radius, diameter, diameter);
         }
 

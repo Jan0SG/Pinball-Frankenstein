@@ -63,9 +63,29 @@ namespace LYB.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        public static System.Drawing.Bitmap _100_pts {
+            get {
+                object obj = ResourceManager.GetObject("_100_pts", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         public static System.Drawing.Bitmap Pinball {
             get {
                 object obj = ResourceManager.GetObject("Pinball", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        public static System.Drawing.Bitmap Spacenebula {
+            get {
+                object obj = ResourceManager.GetObject("Spacenebula", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

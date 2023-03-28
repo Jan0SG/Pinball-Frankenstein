@@ -108,6 +108,8 @@
     <None Include="Resources\album.gif" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Spacenebula.jpg" />
+    <None Include="Resources\100 pts.png" />
     <Content Include="Resources\pinball.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Drawing;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace LYB
 {
@@ -13,6 +14,8 @@ namespace LYB
         Vec2 axis, normal, res;
         float dis, dif;
         List<VPoint> pts;
+        
+        
         public VSolver(List<VPoint> pts)
         {
             this.pts = pts;
@@ -42,6 +45,7 @@ namespace LYB
 
                     if (dis < (p1.Radius + p2.Radius))//COLLISION DETECTED
                     {
+                        
                         dif = (dis - (p1.Radius + p2.Radius)) * .5f;// dividir la fuerza para repatar entre ambas colisiones
                         normal = axis / dis; // normalizar la direccion para tener el vector unitario
                         res = dif * normal;// vector resultante

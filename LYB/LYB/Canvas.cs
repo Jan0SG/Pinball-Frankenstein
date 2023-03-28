@@ -55,7 +55,7 @@ namespace LYB
 
         public void DrawMap(int[,] map, List<VPoint> balls, List<VBox> boxes)
         {
-            g.DrawImage(backgroundImage, 0, 0, Width, Height);
+            //g.DrawImage(backgroundImage, 0, 0, Width, Height);
             boxes.Add(new VBox(650, 5, 500, 10, balls.Count)); // Techo
             balls.Add(boxes[boxes.Count - 1].a);
             balls.Add(boxes[boxes.Count - 1].b);
@@ -86,8 +86,8 @@ namespace LYB
             balls.Add(boxes[boxes.Count - 1].c);
             balls.Add(boxes[boxes.Count - 1].d);
             
-            /*Random rand = new Random();
-            for (int y = 0; y < map.GetLength(0); y++)
+            //Random rand = new Random();
+            /*for (int y = 0; y < map.GetLength(0); y++)
             {
                 for (int x = 0; x < map.GetLength(1); x++)
                 {

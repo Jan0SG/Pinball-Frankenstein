@@ -7,12 +7,14 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace LYB
 {
     public partial class Form1 : Form
     {
         Canvas canvas;
+        List<VPoint> ballswall;
         List<VPoint> balls;
         VRope rope;
         List<VBox> boxes;
@@ -34,6 +36,7 @@ namespace LYB
            
             PCT_CANVAS.Image    = canvas.bmp;
             balls               = new List<VPoint>();
+            ballswall           = new List<VPoint>();
             boxes               = new List<VBox>();
             solver              = new VSolver(balls);
             angle = 0;
@@ -45,7 +48,7 @@ namespace LYB
             rope = new VRope(450, 400, 15, 25, balls.Count);
             balls.AddRange(rope.pts);//*/// hay que añadir las pelotas de cada cuerpo a la lista para ser tratadas
 
-
+            /*
             InterBox InterBox = new InterBox(620, 630, 440, 40, balls.Count);
 
             InterBox.Collided += InterBox_Collided;
@@ -55,10 +58,13 @@ namespace LYB
             balls.Add(InterBox.b);
             balls.Add(InterBox.c);
             balls.Add(InterBox.d);
-            
+            */
 
             for (int i = 0; i < 15; i++)
                 balls.Add(new VPoint(rand.Next(450,820), rand.Next(20, 550), balls.Count, true));//*/
+            
+               
+            //ballswall.Add(Resource1.space);
 
             canvas.DrawMap(Mapas.map2, balls, boxes); // Dibujar el mapa
             balls.Add(new VPoint(870, 570, balls.Count));
@@ -83,6 +89,8 @@ namespace LYB
             balls.Add(boxes[boxes.Count - 1].b);
             balls.Add(boxes[boxes.Count - 1].c);
             balls.Add(boxes[boxes.Count - 1].d);
+
+            textBox1.Text = "3";
             
         }
 
@@ -110,7 +118,13 @@ namespace LYB
         private void PCT_CANVAS_MouseClick(object sender, MouseEventArgs e)
         {
             if (CHK_GENERATE.Checked)
+            {
                 balls.Add(new VPoint(e.X, e.Y, balls.Count));
+                int currentValue = int.Parse(textBox1.Text);
+                currentValue--;
+                textBox1.Text = currentValue.ToString();
+            }
+                
         }
 
         private void PCT_CANVAS_MouseDown(object sender, MouseEventArgs e)
@@ -205,7 +219,7 @@ namespace LYB
             private void TIMER_Tick(object sender, EventArgs e)
         {
             canvas.LessFast(balls);
-            PCT_CANVAS.BackgroundImage = Resource1.space;
+            PCT_CANVAS.BackgroundImage = Resources.Spacenebula;
             PCT_CANVAS.BackgroundImageLayout = ImageLayout.Zoom;
             ballId = solver.Update(canvas.g, canvas.Width, canvas.Height, mouse, isMouseDown);
       
@@ -220,7 +234,7 @@ namespace LYB
             
             PCT_CANVAS.Invalidate();
 
-            if (balls.Count > 50)
+            if (balls.Count > 47)
             {
                 this.Close();
             }
